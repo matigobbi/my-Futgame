@@ -1,7 +1,11 @@
-let ballX = 270
+let ballX = 280
 let ballY = 100
-let speedX =  (Math.random()*2.8) - 1.4;
-let speedY = (Math.random()* 4)+2
+function randomX(){
+	 return SpeedX * ((Math.random()*4) - 2)}
+function randomY(){ 
+	 (Math.random()*5.5) +3.5}
+let speedX = (Math.random()*4) - 2;
+let speedY = (Math.random()*5.5) + 3.5
 let leftWall = 110
 let rigthWall = 440
 
@@ -12,26 +16,53 @@ class Player{
 		this.width = 38
 		this.height = 18	
 	}	
-	draw(){
+
+	draw(){		
 		let xm = mouseX;
 		let xc = constrain(mouseX, leftWall, rigthWall);
         image(game.DEplayer, 260, 80, 40, 18)
 		image(game.ball, ballX, ballY, 20 , 20)
         image(game.playerImage, xc - 17, 485, this.width, this.height)
-		if( ballX <= 50 || ballX  >= 540){
-			ballX = 270
-			ballY = 100
-			speedY = speedY * -1
-		}
-		
+
 		ballX = ballX - (speedX)
 		ballY = ballY + (speedY)
+
+		//here text for a goal
+		//here the ball re-appears
+		if( ballX <= 50 || ballX  >= 500 || ballY <= 0){
+			ballX = 270
+			ballY = 100
+			speedY = 0
+			speedX = 0
+			speedX = (Math.random()*4) - 2;
+			speedY = (Math.random()* 5.5)+ 3.5; 
+		}
+
+		let paloleft = dist(ballX, ballY, 89 , 485)
+		let palorigth = dist (ballX, ballY, 457 , 485)
+
+		// si golpea los palos o el arquero
+		if (paloleft < 15){ speedY -=1}
+		if (palorigth < 15){ speedY -=1}
  		let d = dist(ballX, ballY, Math.round(mouseX), 485);
-	//	console.log(Math.round(d))
-		if ( d < 20 ){ speedY -= 1 }	
+	
+		if ( d < 30 ){ speedY -= 3
+			var mySave= createDiv('Goood save!!');
+			mySave.style("font-family", "Fuzzy Bubbles");
+			mySave.style('font-size', '22px');
+			mySave.position(700, 250);
+			function removediv(){
+				mySave.remove()
+			}
+			setTimeout(removediv, 500)
+		 }	
 		//HERE THE GAME FINISH
-		if( ballY >= 512){ speedY = 0;
-			speedX = 0}	
+		if( ballY >= 510){ 
+			speedY = 0;
+			speedX = 0
+			textSize(42);
+			text("You loose :( ",180, 200)
+			}	
 		}	
 	}
 

@@ -6,7 +6,6 @@ class Game {
         this.backgroundImage 
 		this.playerImage 
         this.goalImage
-        this.ball = new Player("ball")
         this.DEplayer
         this.tribuna
     }
