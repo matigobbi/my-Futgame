@@ -8,15 +8,17 @@ class Game {
         this.goalImage
         this.ball = new Player("ball")
         this.DEplayer
+        this.tribuna
     }
     draw(){
-
-        
         this.background.draw()  
         this.player.draw()
     }
     
     preload(){
+ //       this.photograph = loadImage("png/photograph.png")
+        this.tribuna = loadImage('png/tribuna.png')
+        this.tribuna1 = loadImage('png/tribuna1.png')
         this.DEplayer = loadImage('png/DEplayer.png')
         this.ball =loadImage('png/ball_soccer1.png')
         this.backgroundImage = loadImage('png/grassimg1.png')

@@ -8,7 +8,6 @@ function preload() {
 }
 
 function setup() {
-	
 	console.log('this is the setup')
 	createCanvas(550, 550)
 }
