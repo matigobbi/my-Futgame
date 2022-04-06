@@ -8,6 +8,8 @@ let speedX = (Math.random()*4) - 2;
 let speedY = (Math.random()*5.5) + 3.5
 let leftWall = 110
 let rigthWall = 440
+let score=1 
+
 var delay = ( function() {
     var timer = 0;
     return function(callback, ms) {
@@ -43,7 +45,8 @@ class Player{
 			ballX = 270
 			ballY = 100
 			speedY = 0
-			speedX = 0			
+			speedX = 0
+			document.querySelector(".score").innerText=score++;
 			//starts delay
 			delay(function(){
 				speedX = (Math.random()*4) - 2;
@@ -72,7 +75,15 @@ class Player{
 				mySave.remove()
 			}
 			setTimeout(removediv, 750)
-		 }	
+		 }
+		 if(score>=9){
+			speedY = 0;
+			speedX = 0;
+			textSize(30);
+			text("YOU WON!!!",200, 200)
+			text(" Press Spacebar to play again", 80 , 240)	
+			image(game.messi, 100, 270, 350 ,180 )
+		}
 		 
 		//HERE THE GAME FINISH
 		if( ballY >= 514){ 
@@ -81,8 +92,7 @@ class Player{
 			textSize(30);
 			text(":( You loose :(",200, 200)
 			text(" Press Spacebar to play again", 80 , 240)	
-			image(game.gerChamp, 100, 270, 350 , 180 )
-	
+			image(game.gerChamp, 100, 270, 350 ,180 )
 		 }	
 		}	
 	}
