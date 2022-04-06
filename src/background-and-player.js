@@ -8,6 +8,13 @@ let speedX = (Math.random()*4) - 2;
 let speedY = (Math.random()*5.5) + 3.5
 let leftWall = 110
 let rigthWall = 440
+var delay = ( function() {
+    var timer = 0;
+    return function(callback, ms) {
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+    };
+})();
 
 class Player{
 	constructor ( x , y){
@@ -29,39 +36,45 @@ class Player{
 
 		//here text for a goal
 		//here the ball re-appears
-		if( ballX <= 50 || ballX  >= 500 || ballY <= 0){
+		if( ballX <= 50 || ballX  >= 500 || ballY <= 50){
 			ballX = 270
 			ballY = 100
 			speedY = 0
-			speedX = 0
-			speedX = (Math.random()*4) - 2;
-			speedY = (Math.random()* 5.5)+ 3.5; 
+			speedX = 0			
+			//starts delay
+			delay(function(){
+				speedX = (Math.random()*4) - 2;
+				speedY = (Math.random()* 5.5)+ 3.5; 
+			}, 2000 ); // end delay
+			
 		}
 
 		let paloleft = dist(ballX, ballY, 89 , 485)
 		let palorigth = dist (ballX, ballY, 457 , 485)
 
-		// si golpea los palos o el arquero
+		// si golpea los palos o el arquerox
 		if (paloleft < 15){ speedY -=1}
 		if (palorigth < 15){ speedY -=1}
  		let d = dist(ballX, ballY, Math.round(mouseX), 485);
 	
-		if ( d < 30 ){ speedY -= 3
+		if ( d < 25 ){ speedY -= 3
 			var mySave= createDiv('Goood save!!');
 			mySave.style("font-family", "Fuzzy Bubbles");
 			mySave.style('font-size', '22px');
-			mySave.position(700, 250);
+			mySave.position(730, 250);
+			mySave.style.position ="static"
 			function removediv(){
 				mySave.remove()
 			}
-			setTimeout(removediv, 500)
+			setTimeout(removediv, 750)
 		 }	
+		 
 		//HERE THE GAME FINISH
-		if( ballY >= 510){ 
+		if( ballY >= 514){ 
 			speedY = 0;
 			speedX = 0
 			textSize(42);
-			text("You loose :( ",180, 200)
+			text("You loose :(",180, 200)
 			}	
 		}	
 	}
@@ -70,7 +83,7 @@ class Player{
 class Background {
     draw() {
 		image(game.backgroundImage, 0, 0, width, height)
-		image(game.goalImage, 0, 505, 550, 55)
+		image(game.goalImage, 0, 507, 550, 55)
 //		image(game.photograph, -70, 410, 100,189)
 		image(game.tribuna1, 500, 30, 70, 500)
 		image(game.tribuna, -7, 30, 70, 500)		

@@ -15,7 +15,6 @@ class Game {
     }
     
     preload(){
- //       this.photograph = loadImage("png/photograph.png")
         this.tribuna = loadImage('png/tribuna.png')
         this.tribuna1 = loadImage('png/tribuna1.png')
         this.DEplayer = loadImage('png/DEplayer.png')

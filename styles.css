@@ -7,3 +7,16 @@ body {
     background-color: #c8dad9;
   }
   
+  .tittle{
+    margin-top: 50px;
+    color: #483D8B;
+  }
+
+  .boxes{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .fotos{
+    border-radius: 200px;
+  }
