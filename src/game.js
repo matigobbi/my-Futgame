@@ -22,5 +22,6 @@ class Game {
         this.backgroundImage = loadImage('png/grassimg1.png')
         this.playerImage = loadImage('png/characterBlue.png')   
         this.goalImage = loadImage('png/goal.png')
+        this.gerChamp = loadImage("png/germany-champion.gif")
     }
 }

@@ -1,9 +1,9 @@
 let ballX = 280
 let ballY = 100
-function randomX(){
+/*function randomX(){
 	 return SpeedX * ((Math.random()*4) - 2)}
 function randomY(){ 
-	 (Math.random()*5.5) +3.5}
+	 return (Math.random()*5.5) +3.5}*/
 let speedX = (Math.random()*4) - 2;
 let speedY = (Math.random()*5.5) + 3.5
 let leftWall = 110
@@ -16,6 +16,11 @@ var delay = ( function() {
     };
 })();
 
+function keyPressed(){
+	if(keyCode === 32){
+		location.reload();
+}};
+
 class Player{
 	constructor ( x , y){
 		this.x 
@@ -27,16 +32,14 @@ class Player{
 	draw(){		
 		let xm = mouseX;
 		let xc = constrain(mouseX, leftWall, rigthWall);
-        image(game.DEplayer, 260, 80, 40, 18)
-		image(game.ball, ballX, ballY, 20 , 20)
-        image(game.playerImage, xc - 17, 485, this.width, this.height)
-
-		ballX = ballX - (speedX)
-		ballY = ballY + (speedY)
-
+        image(game.DEplayer, 260, 80, 40, 18);
+		image(game.ball, ballX, ballY, 20 , 20);
+        image(game.playerImage, xc - 17, 485, this.width, this.height);
+		ballX = ballX - (speedX);
+		ballY = ballY + (speedY);
 		//here text for a goal
 		//here the ball re-appears
-		if( ballX <= 50 || ballX  >= 500 || ballY <= 50){
+		if( ballX <= 50 || ballX  >= 500 || ballY <= -20){
 			ballX = 270
 			ballY = 100
 			speedY = 0
@@ -45,7 +48,8 @@ class Player{
 			delay(function(){
 				speedX = (Math.random()*4) - 2;
 				speedY = (Math.random()* 5.5)+ 3.5; 
-			}, 2000 ); // end delay
+			}, 1500 ); 
+			// end delay
 			
 		}
 
@@ -53,13 +57,14 @@ class Player{
 		let palorigth = dist (ballX, ballY, 457 , 485)
 
 		// si golpea los palos o el arquerox
-		if (paloleft < 15){ speedY -=1}
-		if (palorigth < 15){ speedY -=1}
+		if (paloleft < 15){ speedY -=1};
+		if (palorigth < 15){ speedY -=1};
  		let d = dist(ballX, ballY, Math.round(mouseX), 485);
 	
 		if ( d < 25 ){ speedY -= 3
 			var mySave= createDiv('Goood save!!');
 			mySave.style("font-family", "Fuzzy Bubbles");
+			mySave.style("background-color", "white");
 			mySave.style('font-size', '22px');
 			mySave.position(730, 250);
 			mySave.style.position ="static"
@@ -73,9 +78,12 @@ class Player{
 		if( ballY >= 514){ 
 			speedY = 0;
 			speedX = 0
-			textSize(42);
-			text("You loose :(",180, 200)
-			}	
+			textSize(30);
+			text(":( You loose :(",200, 200)
+			text(" Press Spacebar to play again", 80 , 240)	
+			image(game.gerChamp, 100, 270, 350 , 180 )
+	
+		 }	
 		}	
 	}
 
