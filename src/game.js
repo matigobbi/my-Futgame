@@ -8,6 +8,7 @@ class Game {
         this.goalImage
         this.DEplayer
         this.tribuna
+    //    this.ballcatched
     }
     draw(){
         this.background.draw()  
@@ -15,6 +16,7 @@ class Game {
     }
     
     preload(){
+        
         this.tribuna = loadImage('png/tribuna.png')
         this.tribuna1 = loadImage('png/tribuna1.png')
         this.DEplayer = loadImage('png/DEplayer.png')
@@ -24,5 +26,9 @@ class Game {
         this.goalImage = loadImage('png/goal.png')
         this.gerChamp = loadImage("png/germany-champion.gif")
         this.messi = loadImage("png/messi.gif")
+    //    this.ballcatched = loadSound("png/ball-catched.mp3")
+    //    this.ballkicked = loadSound("png/ball-kick.mp3")
+   //     this.soccerballkicked = loadSound("png/soccer-ball-kick.mp3")
+   //     this.crowd =loadSound("png/crowd-stadium.mp3")
     }
 }
