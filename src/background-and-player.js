@@ -35,11 +35,10 @@ class Player{
 
 	draw(){	
 			
-		let xm = mouseX;
 		let xc = constrain(mouseX, leftWall, rigthWall);
-        image(game.DEplayer, 260, 80, 40, 18);
+    image(game.DEplayer, 260, 80, 40, 18);
 		image(game.ball, ballX, ballY, 20 , 20);
-        image(game.playerImage, xc - 17, 485, this.width, this.height);
+    image(game.playerImage, xc - 17, 485, this.width, this.height);
 		ballX = ballX - (speedX);
 		ballY = ballY + (speedY);
 
@@ -56,7 +55,7 @@ class Player{
 				speedX = (Math.random()*4) - 2;
 				speedY = (Math.random()* 5.5)+ 3.5; 
 				ballkicked.play();
-			}, 1500 ); 
+			}, 3000 ); 
 			// end delay
 			
 		}
