@@ -3,7 +3,6 @@ class Game {
     constructor(){
         this.background = new Background()
 		this.player = new Player()
-        this.backgroundImage 
 		this.playerImage 
         this.goalImage
         this.DEplayer
@@ -15,7 +14,6 @@ class Game {
     }
     
     preload(){
-        
         this.tribuna = loadImage('png/tribuna.png')
         this.tribuna1 = loadImage('png/tribuna1.png')
         this.DEplayer = loadImage('png/DEplayer.png')

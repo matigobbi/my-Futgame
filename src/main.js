@@ -11,7 +11,7 @@ function setup() {
 	console.log('this is the setup')
 	createCanvas(550, 550)
 }
-
+	
 function draw(){
 	game.draw()
 }

@@ -39,9 +39,10 @@ class Player{
     image(game.DEplayer, 260, 80, 40, 18);
 		image(game.ball, ballX, ballY, 20 , 20);
     image(game.playerImage, xc - 17, 485, this.width, this.height);
+		if(frameCount>= 150){
 		ballX = ballX - (speedX);
 		ballY = ballY + (speedY);
-
+	}
 
 		//here the ball re-appears
 		if( ballX <= 50 || ballX  >= 500 || ballY <= -20){
@@ -55,17 +56,17 @@ class Player{
 				speedX = (Math.random()*4) - 2;
 				speedY = (Math.random()* 5.5)+ 3.5; 
 				ballkicked.play();
-			}, 3000 ); 
+			}, 2000 ); 
 			// end delay
 			
 		}
-
-		let paloleft = dist(ballX, ballY, 89 , 485)
-		let palorigth = dist (ballX, ballY, 457 , 485)
-
 		// the ball hits the goalpost
-		if (paloleft < 30){ speedY -=1};
-		if (palorigth < 30){ speedY -=1};
+		
+		let paloleftdist = dist(ballX, ballY, 89 , 485)
+		let palorigthdist = dist (ballX, ballY, 457 , 485)
+
+		if (paloleftdist < 30){ speedY -=1};
+		if (palorigthdist < 30){ speedY -=1};
  		let d = dist(ballX, ballY, Math.round(mouseX), 485);
 
 		//the ball hits the goalkepeer
@@ -114,6 +115,8 @@ class Background {
 		image(game.backgroundImage, 0, 0, width, height)
 		image(game.goalImage, 0, 507, 550, 55)
 		image(game.tribuna1, 500, 30, 70, 500)
-		image(game.tribuna, -7, 30, 70, 500)		
+		image(game.tribuna, -7, 30, 70, 500)
+		
+
     }
 }
